@@ -1,0 +1,67 @@
+project_name = "skill-matrix"
+environment  = "demo"
+aws_region   = "ap-south-1"
+
+vpc_cidr = "10.20.0.0/16"
+
+public_subnet_cidrs = [
+  "10.20.1.0/24",
+  "10.20.2.0/24"
+]
+
+private_db_subnet_cidrs = [
+  "10.20.11.0/24",
+  "10.20.12.0/24"
+]
+
+container_port    = 8080
+health_check_path = "/actuator/health"
+
+ecs_cpu           = 512
+ecs_memory        = 1024
+ecs_desired_count = 1
+
+create_ecs_service = false
+backend_image_tag  = "latest"
+
+cloudwatch_log_retention = 7
+
+cors_allowed_origins = [
+  "http://localhost:4200"
+]
+
+db_name                 = "skill_matrix_db"
+db_username             = "skillmatrixadmin"
+mysql_engine_version    = "8.0"
+rds_instance_class      = "db.t4g.micro"
+rds_allocated_storage   = 20
+rds_max_allocated_storage = 50
+rds_backup_retention    = 7
+rds_skip_final_snapshot = true
+ecr_image_retention_count = 10
+
+cloudfront_price_class = "PriceClass_100"
+enable_ipv6            = true
+
+github_org         = "VenkataJanga"
+github_repo        = "skill-matrix-platform"
+github_branch      = "Demo"
+github_environment  = "demo"
+
+# Set to false and provide existing_github_oidc_provider_arn if the account
+# already contains the GitHub Actions OIDC provider.
+create_github_oidc_provider = true
+
+# Set after bootstrap so Terraform state access is scoped to the exact bucket.
+terraform_state_bucket_name = ""
+
+alert_emails = []
+
+ecs_cpu_alarm_threshold          = 80
+ecs_memory_alarm_threshold       = 80
+rds_cpu_alarm_threshold          = 80
+rds_free_storage_alarm_bytes     = 3221225472
+
+monthly_budget_usd          = 90
+budget_notification_emails  = []
+cloudtrail_log_retention_days = 90

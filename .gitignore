@@ -8,6 +8,13 @@ backend/target/
 *.jar.original
 *.war
 *.ear
+
+# Local environment and secret configuration
+.env
+.env.*
+!.env.example
+**/application-local.yml
+**/application-local.yaml
 l
 frontend/node_modules/
 frontend/dist/
@@ -22,4 +29,20 @@ target/
 *.jar
 *.war
 *.ear
+
+# Terraform local state and generated files
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+terraform.tfvars
+backend.hcl
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# GitHub Actions local artifacts
+task-definition.json
 

@@ -14,6 +14,22 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Deployment configuration
+
+The application API base is configured in `src/environments/environment.ts` and
+`src/environments/environment.prod.ts` as the relative path `/api/v1`. Local
+development therefore uses the Angular proxy to forward `/api` requests to
+`http://localhost:8080`.
+
+For local backend startup, provide `APP_JWT_SECRET`,
+`SPRING_DATASOURCE_PASSWORD`, and any other datasource values in the shell
+environment; no local passwords or JWT secrets are tracked in this repository.
+
+When deployed, CloudFront must route `/api/*` to the backend load balancer and
+serve the frontend for other paths. Configure SPA fallback to `/index.html` so
+direct navigation or refresh works for routes such as `/login`, `/admin`,
+`/lead`, and `/technician`.
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).

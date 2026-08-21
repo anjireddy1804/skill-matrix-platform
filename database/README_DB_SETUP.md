@@ -160,7 +160,7 @@ docker exec -it skill_matrix_mysql mysql -u skillmatrix_user -p skill_matrix_db
 1. Use environment variables for all connection details
 2. Store credentials in AWS Secrets Manager / Vault
 3. Application user should have DML-only privileges in PROD (no DDL)
-4. Flyway `validate` mode in PROD — migrations applied manually with DBA approval
+4. Flyway runs during PROD application startup and applies pending migrations
 5. **Never run V03 (dev-migration) in QA or PROD**
 6. `application-dev.yml` Flyway locations must NOT be active in PROD
 
@@ -171,6 +171,8 @@ SPRING_DATASOURCE_URL=jdbc:mysql://<host>:3306/skill_matrix_db?useSSL=true
 SPRING_DATASOURCE_USERNAME=<user>
 SPRING_DATASOURCE_PASSWORD=<password>
 SPRING_PROFILES_ACTIVE=prod
+APP_JWT_SECRET=<secret supplied through the runtime secret store>
+APP_CORS_ALLOWED_ORIGINS=<comma-separated frontend origins>
 ```
 
 ---

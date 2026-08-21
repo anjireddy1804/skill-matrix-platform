@@ -1,0 +1,12 @@
+target/
+.git/
+.github/
+.idea/
+.vscode/
+*.log
+*.tmp
+*.swp
+.env
+.env.*
+application-local.yml
+application-local.yaml

@@ -1,8 +1,8 @@
 # ============================================================
 # Skill Matrix Platform — PROD Profile Configuration
 # Usage: --spring.profiles.active=prod
-# ALL values MUST come from environment variables or AWS Secrets Manager
-# No hardcoded credentials — ever.
+# All credentials and deployment-specific values come from environment variables
+# or AWS Secrets Manager injected as environment variables.
 # ============================================================
 
 spring:
@@ -31,7 +31,7 @@ spring:
         format_sql: false
         dialect: org.hibernate.dialect.MySQLDialect
 
-  # Flyway — validate only in PROD; migrations applied manually with DBA approval
+  # Flyway — apply pending production migrations during application startup
   flyway:
     locations:
       - classpath:db/migration

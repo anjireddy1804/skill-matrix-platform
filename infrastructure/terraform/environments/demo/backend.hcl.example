@@ -1,0 +1,4 @@
+bucket       = "REPLACE_AFTER_BOOTSTRAP"
+key          = "skill-matrix/demo/terraform.tfstate"
+region       = "ap-south-1"
+use_lockfile = true

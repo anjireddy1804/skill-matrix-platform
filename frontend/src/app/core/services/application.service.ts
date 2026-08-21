@@ -20,8 +20,9 @@ import {
   UserStatusRequest,
   UserSummary,
 } from '../models/application.model';
+import { environment } from '../../../environments/environment';
 
-const API_BASE = 'http://localhost:8080/api/v1';
+const API_BASE = environment.apiBaseUrl;
 
 @Injectable({ providedIn: 'root' })
 export class ApplicationService {

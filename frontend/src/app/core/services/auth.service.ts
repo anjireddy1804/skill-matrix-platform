@@ -10,8 +10,9 @@ import {
   TokenResponse,
   UserMe,
 } from '../models/auth.model';
+import { environment } from '../../../environments/environment';
 
-const API_BASE = 'http://localhost:8080/api/v1/auth';
+const API_BASE = `${environment.apiBaseUrl}/auth`;
 const ACCESS_TOKEN_KEY = 'sm_access_token';
 const REFRESH_TOKEN_KEY = 'sm_refresh_token';
 
