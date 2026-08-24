@@ -1,5 +1,5 @@
 locals {
-  name_prefix  = "${var.project_name}-${var.environment}"
+  name_prefix   = "${var.project_name}-${var.environment}"
   load_balancer = "${local.name_prefix}-alb"
   target_group  = "${local.name_prefix}-backend-tg"
 }

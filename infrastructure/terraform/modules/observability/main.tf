@@ -1,6 +1,6 @@
 locals {
-  name_prefix          = "${var.project_name}-${var.environment}"
-  alb_dimension        = split(":", var.alb_arn)[5]
+  name_prefix            = "${var.project_name}-${var.environment}"
+  alb_dimension          = split(":", var.alb_arn)[5]
   target_group_dimension = split(":", var.target_group_arn)[5]
 }
 

@@ -1,6 +1,6 @@
 locals {
-  name_prefix       = "${var.project_name}-${var.environment}"
-  db_subnet_group   = "${local.name_prefix}-db-subnet-group"
+  name_prefix         = "${var.project_name}-${var.environment}"
+  db_subnet_group     = "${local.name_prefix}-db-subnet-group"
   instance_identifier = "${local.name_prefix}-mysql"
 }
 
@@ -32,9 +32,9 @@ resource "aws_db_instance" "this" {
   publicly_accessible    = false
   multi_az               = false
 
-  backup_retention_period = var.backup_retention_period
-  backup_window           = "19:00-19:30"
-  maintenance_window      = "sun:20:00-sun:20:30"
+  backup_retention_period    = var.backup_retention_period
+  backup_window              = "19:00-19:30"
+  maintenance_window         = "sun:20:00-sun:20:30"
   auto_minor_version_upgrade = true
   apply_immediately          = false
 

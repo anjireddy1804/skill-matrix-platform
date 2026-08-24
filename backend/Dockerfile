@@ -1,6 +1,14 @@
 FROM maven:3.9.9-eclipse-temurin-21 AS build
 
 WORKDIR /build
+#COPY zscalar.cer /tmp/zscaler-root-ca.cer
+#RUN keytool -importcert \
+#    -noprompt \
+#    -trustcacerts \
+#    -alias zscaler-root-ca \
+#    -file /tmp/zscaler-root-ca.cer \
+#    -cacerts \
+#    -storepass changeit
 COPY pom.xml .
 COPY src ./src
 RUN mvn --batch-mode clean package -DskipTests

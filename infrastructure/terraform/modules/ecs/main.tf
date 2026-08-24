@@ -1,12 +1,12 @@
 locals {
-  name_prefix      = "${var.project_name}-${var.environment}"
-  cluster_name     = "${local.name_prefix}-cluster"
-  service_name     = "${local.name_prefix}-backend"
-  task_family      = "${local.name_prefix}-backend"
-  log_group_name   = "/ecs/${local.name_prefix}-backend"
-  container_name   = "backend"
-  image            = "${var.ecr_repository_url}:${var.backend_image_tag}"
-  database_url     = "jdbc:mysql://${var.database_endpoint}:${var.database_port}/${var.database_name}"
+  name_prefix    = "${var.project_name}-${var.environment}"
+  cluster_name   = "${local.name_prefix}-cluster"
+  service_name   = "${local.name_prefix}-backend"
+  task_family    = "${local.name_prefix}-backend"
+  log_group_name = "/ecs/${local.name_prefix}-backend"
+  container_name = "backend"
+  image          = "${var.ecr_repository_url}:${var.backend_image_tag}"
+  database_url   = "jdbc:mysql://${var.database_endpoint}:${var.database_port}/${var.database_name}"
 }
 
 resource "aws_ecs_cluster" "this" {
@@ -102,8 +102,8 @@ resource "aws_ecs_task_definition" "backend" {
       portMappings = [
         {
           name          = "backend-http"
-          containerPort  = var.container_port
-          hostPort       = var.container_port
+          containerPort = var.container_port
+          hostPort      = var.container_port
           protocol      = "tcp"
           appProtocol   = "http"
         }
@@ -162,18 +162,18 @@ resource "aws_ecs_task_definition" "backend" {
 resource "aws_ecs_service" "backend" {
   count = var.create_ecs_service ? 1 : 0
 
-  name            = local.service_name
-  cluster         = aws_ecs_cluster.this.id
-  task_definition = aws_ecs_task_definition.backend[0].arn
-  desired_count   = var.ecs_desired_count
-  launch_type     = "FARGATE"
+  name             = local.service_name
+  cluster          = aws_ecs_cluster.this.id
+  task_definition  = aws_ecs_task_definition.backend[0].arn
+  desired_count    = var.ecs_desired_count
+  launch_type      = "FARGATE"
   platform_version = "LATEST"
 
   deployment_minimum_healthy_percent = 0
   deployment_maximum_percent         = 200
   health_check_grace_period_seconds  = 60
-  enable_ecs_managed_tags             = true
-  propagate_tags                      = "SERVICE"
+  enable_ecs_managed_tags            = true
+  propagate_tags                     = "SERVICE"
 
   deployment_circuit_breaker {
     enable   = true
