@@ -36,6 +36,7 @@ spring:
       - classpath:db/migration
       - classpath:db/dev-migration
     clean-disabled: false
+    out-of-order: true
 
 # ============================================================
 # Server

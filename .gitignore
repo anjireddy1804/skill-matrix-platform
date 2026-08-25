@@ -46,3 +46,5 @@ override.tf.json
 # GitHub Actions local artifacts
 task-definition.json
 
+*.cer
+*.crt
